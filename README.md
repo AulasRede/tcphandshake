@@ -20,8 +20,7 @@
 11. [Parte 7 — Análise do Encerramento da Conexão (Bônus)](#11-parte-7--análise-do-encerramento-da-conexão-bônus)
 12. [Questões para Reflexão](#12-questões-para-reflexão)
 13. [Entregáveis](#13-entregáveis)
-14. [Critérios de Avaliação](#14-critérios-de-avaliação)
-15. [Referências](#15-referências)
+14. [Referências](#14-referências)
 
 ---
 
