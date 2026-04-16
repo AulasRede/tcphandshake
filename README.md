@@ -75,13 +75,13 @@ O cliente finaliza o handshake enviando um segmento com a flag **ACK** ativada:
 ```
     Cliente                              Servidor
        |                                    |
-       |  -------- SYN (Seq=x) --------->  |
+       |  -------- SYN (Seq=x) --------->   |
        |                                    |
-       |  <--- SYN-ACK (Seq=y, Ack=x+1) -- |
+       |  <--- SYN-ACK (Seq=y, Ack=x+1) --  |
        |                                    |
        |  -------- ACK (Ack=y+1) -------->  |
        |                                    |
-       |     ✅ Conexão Estabelecida         |
+       |      -Conexão Estabelecida-        |
        |                                    |
 ```
 
