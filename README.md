@@ -17,10 +17,8 @@
 8. [Parte 4 — Aplicação de Filtros de Exibição](#8-parte-4--aplicação-de-filtros-de-exibição)
 9. [Parte 5 — Identificação e Análise do Handshake TCP](#9-parte-5--identificação-e-análise-do-handshake-tcp)
 10. [Parte 6 — Análise Detalhada dos Pacotes](#10-parte-6--análise-detalhada-dos-pacotes)
-11. [Parte 7 — Análise do Encerramento da Conexão (Bônus)](#11-parte-7--análise-do-encerramento-da-conexão-bônus)
-12. [Questões para Reflexão](#12-questões-para-reflexão)
-13. [Entregáveis](#13-entregáveis)
-14. [Referências](#14-referências)
+11. [Entregáveis](#11-entregáveis)
+12. [Referências](#12-referências)
 
 ---
 
@@ -306,54 +304,7 @@ i) Após esse pacote, a conexão está estabelecida. Qual será o próximo passo
 
 ---
 
-## 11. Parte 7 — Análise do Encerramento da Conexão (Bônus)
-
-Após a transferência dos dados HTTP, a conexão TCP é encerrada. Procure nos pacotes capturados os segmentos de encerramento. O encerramento "normal" do TCP utiliza a flag **FIN** e segue um processo de quatro etapas (four-way termination):
-
-```
-    Cliente                              Servidor
-       |                                    |
-       |  -------- FIN, ACK ------------>   |
-       |                                    |
-       |  <------------- ACK -----------    |
-       |                                    |
-       |  <---------- FIN, ACK ---------    |
-       |                                    |
-       |  ------------ ACK ------------>    |
-       |                                    |
-       |     🔴 Conexão Encerrada           |
-       |                                    |
-```
-
-Para encontrar esses pacotes, utilize o filtro:
-
-```
-ip.addr == X.X.X.X && tcp.flags.fin == 1
-```
-
-**Perguntas bônus:**
-
-a) Quem iniciou o encerramento da conexão — o cliente ou o servidor?
-
-b) Quantos pacotes foram necessários para encerrar a conexão? Isso é diferente do handshake de abertura? Por quê?
-
----
-
-## 12. Questões para Reflexão
-
-Responda as questões abaixo de forma discursiva e fundamentada:
-
-1. O que aconteceria se o pacote SYN enviado pelo cliente fosse perdido na rede? Descreva o mecanismo de retransmissão do TCP nesse cenário.
-
-2. Por que o TCP utiliza números de sequência iniciais (ISN) aleatórios em vez de sempre começar por 0 ou 1?
-
-3. Se em vez de HTTP (porta 80) estivéssemos acessando um site HTTPS (porta 443), o handshake TCP seria diferente? Explique o que aconteceria logo após o handshake TCP nesse caso.
-
-4. Explique a diferença entre os conceitos de **filtro de captura** (capture filter) e **filtro de exibição** (display filter) no Wireshark. Quando é mais apropriado usar cada um?
-
----
-
-## 13. Entregáveis
+## 11. Entregáveis
 
 Ao final desta atividade, o aluno deverá submeter um **documento único** (formato PDF ou Word) contendo os seguintes itens:
 
@@ -366,8 +317,6 @@ Ao final desta atividade, o aluno deverá submeter um **documento único** (form
 | 5 | **Evidência 5** | Print do pacote ACK com cabeçalho TCP expandido |
 | 6 | **Tabela de Análise** | Tabela do handshake preenchida (seção 10) |
 | 7 | **Respostas — Análise** | Respostas das perguntas **a** até **i** (seção 10) |
-| 8 | **Respostas — Reflexão** | Respostas das questões 1 a 4 (seção 12) |
-| 9 | **Bônus** *(opcional)* | Evidência e respostas sobre o encerramento da conexão (seção 11) |
 
 ### Observações sobre o Documento
 
@@ -377,7 +326,7 @@ Ao final desta atividade, o aluno deverá submeter um **documento único** (form
 
 ---
 
-## 14. Referências
+## 12. Referências
 
 - **RFC 793** — Transmission Control Protocol. Disponível em: [https://www.rfc-editor.org/rfc/rfc793](https://www.rfc-editor.org/rfc/rfc793)
 - **Wireshark User's Guide**. Disponível em: [https://www.wireshark.org/docs/wsug_html/](https://www.wireshark.org/docs/wsug_html/)
